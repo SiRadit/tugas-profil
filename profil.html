@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Radit</title>
+  <!-- Menghubungkan external stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Raditya Prasna Putra Dharmawan</h1>
+    </header>
+
+    <nav aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
+      <a href="#hobi">Hobi</a>
+      <a href="#jadwal">Jadwal</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+
+    <main>
+      <section id="tentang" class="profile-grid">
+        <img
+          class="profile-photo"
+          src="radit.png"
+          alt="Foto profil Raditya Prasna Putra Dharmawan"
+        >
+        <div>
+          <h2>Tentang Saya</h2>
+          <p>
+            Saya adalah mahasiswa Rekayasa Perangkat Lunak (RPL) yang memiliki
+            ketertarikan terhadap dunia teknologi, khususnya dalam pengembangan
+            perangkat lunak dan game. Selama menjalani perkuliahan, saya mempelajari
+            berbagai hal seperti pemrograman, pengembangan aplikasi, database,
+            pengujian perangkat lunak, serta penerapan design pattern
+            dan software engineering. Saya juga memiliki pengalaman mengerjakan
+            proyek secara berkelompok maupun individu, sehingga terbiasa bekerja sama,
+            bertanggung jawab terhadap tugas, dan mempelajari hal-hal baru.
+            Selain pengembangan aplikasi, saya juga tertarik dengan game development
+            menggunakan Unity dan Godot. Bagi saya, RPL bukan hanya tentang menulis kode,
+            tetapi juga tentang bagaimana membuat sebuah solusi yang dapat digunakan dan
+            memberikan manfaat bagi penggunanya. Saya ingin terus mengembangkan kemampuan
+            teknis maupun kreativitas agar dapat menjadi seorang developer yang mampu
+            menghasilkan perangkat lunak dan game yang berkualitas.
+          </p>
+        </div>
+      </section>
+
+      <section id="hobi">
+        <h2>Hobi Saya</h2>
+        <p>Di waktu luang, saya suka melakukan beberapa kegiatan berikut:</p>
+        <ul>
+          <li>Berenang</li>
+          <li>Bermain game</li>
+          <li>Streaming game</li>
+          <li>Mendengarkan musik</li>
+        </ul>
+      </section>
+
+      <section id="jadwal">
+        <h2>Jadwal Kuliah</h2>
+        <table id="tabel-jadwal">
+          <thead>
+            <tr>
+              <th scope="col">Hari</th>
+              <th scope="col">Mata Kuliah</th>
+              <th scope="col">Jam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Senin</td>
+              <td>Pemrograman Web</td>
+              <td>15.30 - 18.30</td>
+            </tr>
+            <tr>
+              <td>Rabu</td>
+              <td>Global TIK</td>
+              <td>08.30 - 10.30</td>
+            </tr>
+            <tr>
+              <td>Jumat</td>
+              <td>Kewarganegaraan</td>
+              <td>09.00 - 13.40</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="jadwal-aksi">
+          <button type="button" id="btn-toggle-js">Sembunyikan jadwal</button>
+          <button type="button" id="btn-toggle-jquery" class="btn-jquery">Sembunyikan jadwal (jQuery)</button>
+        </div>
+      </section>
+
+      <section id="tautan">
+        <h2>Tautan Profil</h2>
+        <p>Kunjungi tautan berikut untuk melihat referensi profil profesional dan proyek.</p>
+        <div class="links">
+          <a class="button-link" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="button-link" href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </section>
+
+      <section id="kontak">
+        <h2>Kontak Saya</h2>
+        <form id="form-kontak" action="#" method="post" novalidate>
+          <label for="nama">
+            Nama
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama">
+          </label>
+
+          <label for="email">
+            Email
+            <input type="email" id="email" name="email" placeholder="nama@email.com">
+          </label>
+
+          <label for="pesan">
+            Pesan
+            <textarea id="pesan" name="pesan" placeholder="Tulis pesanmu di sini"></textarea>
+          </label>
+
+          <p id="pesan-form" class="pesan-form" role="alert"></p>
+
+          <button type="submit">Kirim</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>(c) 2026 Raditya Prasna Putra Dharmawan. Semua hak dilindungi.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+    const tabelJadwal = document.getElementById("tabel-jadwal");
+    const btnToggleJs = document.getElementById("btn-toggle-js");
+    const btnToggleJquery = document.getElementById("btn-toggle-jquery");
+
+    function perbaruiTeksTombol() {
+      const tersembunyi = tabelJadwal.style.display === "none";
+      btnToggleJs.textContent = tersembunyi ? "Tampilkan jadwal" : "Sembunyikan jadwal";
+      btnToggleJquery.textContent = tersembunyi
+        ? "Tampilkan jadwal (jQuery)"
+        : "Sembunyikan jadwal (jQuery)";
+    }
+
+    btnToggleJs.addEventListener("click", function () {
+      if (tabelJadwal.style.display === "none") {
+        tabelJadwal.style.display = "";     
+      } else {
+        tabelJadwal.style.display = "none";  
+      }
+      perbaruiTeksTombol();
+    });
+
+    const formKontak = document.getElementById("form-kontak");
+    const inputNama = document.getElementById("nama");
+    const inputEmail = document.getElementById("email");
+    const pesanForm = document.getElementById("pesan-form");
+
+    formKontak.addEventListener("submit", function (event) {
+      event.preventDefault(); 
+
+      const nama = inputNama.value.trim();
+      const email = inputEmail.value.trim();
+
+      inputNama.classList.remove("input-error");
+      inputEmail.classList.remove("input-error");
+      pesanForm.className = "pesan-form";
+
+      if (nama === "" && email === "") {
+        tampilkanError("Nama dan email wajib diisi.");
+        inputNama.classList.add("input-error");
+        inputEmail.classList.add("input-error");
+        inputNama.focus();
+      } else if (nama === "") {
+        tampilkanError("Nama wajib diisi.");
+        inputNama.classList.add("input-error");
+        inputNama.focus();
+      } else if (email === "") {
+        tampilkanError("Email wajib diisi.");
+        inputEmail.classList.add("input-error");
+        inputEmail.focus();
+      } else {
+        pesanForm.textContent = "Terima kasih, " + nama + "! Pesanmu sudah terkirim.";
+        pesanForm.classList.add("sukses");
+        formKontak.reset();
+      }
+    });
+
+    function tampilkanError(teks) {
+      pesanForm.textContent = teks;
+      pesanForm.classList.add("error");
+    }
+
+    $(document).ready(function () {
+      $("#btn-toggle-jquery").click(function () {
+        $("#tabel-jadwal").slideToggle(300, function () {
+          perbaruiTeksTombol();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
